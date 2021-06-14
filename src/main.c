@@ -208,10 +208,12 @@ int main(void)
   {
 
     // Wait a tick for the keyboard controller to wake up
-    NRFX_DELAY_MS(100);
-
     // DFU button pressed
-    dfu_start  = dfu_start || button_pressed(BUTTON_DFU);
+    for(int i = 0; i < 20; i++){
+      dfu_start  = dfu_start || button_pressed(BUTTON_DFU);
+      NRFX_DELAY_MS(5);
+    }
+
 
     // DFU + FRESET are pressed --> OTA
     _ota_dfu = _ota_dfu  || ( button_pressed(BUTTON_DFU) && button_pressed(BUTTON_FRESET) ) ;
