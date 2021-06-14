@@ -206,6 +206,10 @@ int main(void)
   /*------------- Determine DFU mode (Serial, OTA, FRESET or normal) -------------*/
   if ( !dfu_skip )
   {
+
+    // Wait a tick for the keyboard controller to wake up
+    NRFX_DELAY_MS(100);
+
     // DFU button pressed
     dfu_start  = dfu_start || button_pressed(BUTTON_DFU);
 
