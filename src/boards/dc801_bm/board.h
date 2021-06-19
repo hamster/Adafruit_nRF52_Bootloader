@@ -25,6 +25,19 @@
 #ifndef DC801_H
 #define DC801_H
 
+// Keyboard config
+#define KEYBOARD_ADDRESS    0x23
+#define KEYBOARD_INT_PIN    18
+
+// I2C configuration
+#define I2C_INSTANCE        0
+
+#define I2C_SCL_PIN         23
+#define I2C_SDA_PIN         22
+
+#define NRFX_TWI0_ENABLED   1
+#define NRFX_TWI1_ENABLED   0
+
 /*------------------------------------------------------------------*/
 /* LED
  *------------------------------------------------------------------*/
