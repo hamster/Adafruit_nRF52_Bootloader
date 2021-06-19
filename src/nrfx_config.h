@@ -1,6 +1,10 @@
 #ifndef NRFX_CONFIG_H__
 #define NRFX_CONFIG_H__
 
+#define NRFX_TWI_ENABLED    1
+#define NRFX_TWI0_ENABLED   1
+#define NRFX_TWI1_ENABLED   0
+
 // Power
 #define NRFX_POWER_ENABLED  1
 #define NRFX_POWER_DEFAULT_CONFIG_IRQ_PRIORITY  7

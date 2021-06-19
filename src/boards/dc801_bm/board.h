@@ -25,6 +25,15 @@
 #ifndef DC801_H
 #define DC801_H
 
+#define HAVE_CUSTOM_SYSTICK
+#define HAVE_CUSTOM_INIT
+#define HAVE_CUSTOM_DFU_START
+
+void custom_board_init(void);
+void custom_board_teardown(void);
+bool custom_dfu_start(void);
+void custom_systick(void);
+
 // Keyboard config
 #define KEYBOARD_ADDRESS    0x23
 #define KEYBOARD_INT_PIN    18
@@ -35,8 +44,7 @@
 #define I2C_SCL_PIN         23
 #define I2C_SDA_PIN         22
 
-#define NRFX_TWI0_ENABLED   1
-#define NRFX_TWI1_ENABLED   0
+
 
 /*------------------------------------------------------------------*/
 /* LED

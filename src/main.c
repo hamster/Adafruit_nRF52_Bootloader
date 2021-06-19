@@ -207,13 +207,11 @@ int main(void)
   if ( !dfu_skip )
   {
 
-    // Wait a tick for the keyboard controller to wake up
-    // DFU button pressed
-    for(int i = 0; i < 20; i++){
-      dfu_start  = dfu_start || button_pressed(BUTTON_DFU);
-      NRFX_DELAY_MS(5);
-    }
+#ifdef HAVE_CUSTOM_DFU_START
+    dfu_start = dfu_start || custom_dfu_start();
+#endif
 
+    dfu_start  = dfu_start || button_pressed(BUTTON_DFU);
 
     // DFU + FRESET are pressed --> OTA
     _ota_dfu = _ota_dfu  || ( button_pressed(BUTTON_DFU) && button_pressed(BUTTON_FRESET) ) ;
@@ -254,6 +252,7 @@ int main(void)
 
     if ( dfu_start || !valid_app )
     {
+
       if ( _ota_dfu )
       {
         led_state(STATE_BLE_DISCONNECTED);

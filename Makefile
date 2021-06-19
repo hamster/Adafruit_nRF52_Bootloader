@@ -132,6 +132,7 @@ C_SRC += $(wildcard src/boards/$(BOARD)/*.c)
 # nrfx
 C_SRC += $(NRFX_PATH)/drivers/src/nrfx_power.c
 C_SRC += $(NRFX_PATH)/drivers/src/nrfx_nvmc.c
+C_SRC += $(NRFX_PATH)/drivers/src/nrfx_twi.c
 C_SRC += $(NRFX_PATH)/mdk/system_$(MCU_SUB_VARIANT).c
 
 # SDK 11 files: serial + OTA DFU
@@ -278,11 +279,12 @@ CFLAGS += -Wno-cast-function-type
 
 # Defined Symbol (MACROS)
 CFLAGS += -D__HEAP_SIZE=0
-CFLAGS += -DCONFIG_GPIO_AS_PINRESET
 
 # Skip defining CONFIG_NFCT_PINS_AS_GPIOS if the device uses the NFCT.
 ifneq ($(USE_NFCT),yes)
   CFLAGS += -DCONFIG_NFCT_PINS_AS_GPIOS
+else 
+  CFLAGS += -DCONFIG_GPIO_AS_PINRESET
 endif
 
 CFLAGS += -DSOFTDEVICE_PRESENT
@@ -348,6 +350,7 @@ print-%:
 # Create build directories
 $(BUILD):
 	@$(MKDIR) "$@"
+	@echo $(CFLAGS)
 
 clean:
 	@$(RM) $(BUILD)

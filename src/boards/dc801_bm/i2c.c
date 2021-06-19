@@ -31,6 +31,10 @@ void twi_master_init(void){
     }
 }
 
+void twi_master_uninit(void){
+    nrfx_twi_uninit(&m_twi_master);
+}
+
 void i2cMasterTransmit(uint16_t addr, uint8_t *pdata, size_t size){
     //badge_mutex_lock(&i2c_mutex);
     nrfx_twi_xfer_desc_t xfer = NRFX_TWI_XFER_DESC_TX(addr, pdata, size);

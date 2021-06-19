@@ -10,6 +10,7 @@ extern "C" {
 #endif
 
 void twi_master_init(void);
+void twi_master_uninit(void);
 void i2cMasterTransmit(uint16_t addr, uint8_t *pdata, size_t size);
 void i2cMasterRead(uint16_t addr, uint8_t *pdata, size_t size);
 

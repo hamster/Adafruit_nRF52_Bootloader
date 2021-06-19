@@ -82,7 +82,7 @@ static const uint8_t led_address[LED_COUNT] = {
 };
 
 void ledInit (void){
-    int i;
+ //   int i;
     
     /* Select function page */
 
@@ -121,8 +121,8 @@ void ledInit (void){
 
     ledPageSet (ISSI_PAGE_LED);
 
-    for (i = 0; i < 0x18; i++) {
-        ledRegSet(i, 0xFF);
+    for (int i = 0; i < 0x18; i++) {
+         ledRegSet(i, 0xFF);
     }
     
     /* Select PWM register page */

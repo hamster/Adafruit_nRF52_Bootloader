@@ -114,6 +114,11 @@ void board_init(void)
   }
 #endif
 
+
+#ifdef HAVE_CUSTOM_INIT
+  custom_board_init();
+#endif
+
   // Init scheduler
   APP_SCHED_INIT(SCHED_MAX_EVENT_DATA_SIZE, SCHED_QUEUE_SIZE);
 
@@ -127,6 +132,11 @@ void board_init(void)
 
 void board_teardown(void)
 {
+
+#ifdef HAVE_CUSTOM_INIT
+  custom_board_teardown();
+#endif
+
   // Disable systick, turn off LEDs
   SysTick->CTRL = 0;
 
@@ -163,6 +173,10 @@ void SysTick_Handler(void)
   _systick_count++;
 
   led_tick();
+
+#ifdef HAVE_CUSTOM_SYSTICK
+  custom_systick();
+#endif
 }
 
 
