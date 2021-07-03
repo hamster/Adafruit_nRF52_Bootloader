@@ -253,6 +253,10 @@ int main(void)
     if ( dfu_start || !valid_app )
     {
 
+#ifdef HAVE_CUSTOM_DFU_START
+      custom_inDFU(true);
+#endif
+
       if ( _ota_dfu )
       {
         led_state(STATE_BLE_DISCONNECTED);

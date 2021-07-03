@@ -33,6 +33,7 @@ void custom_board_init(void);
 void custom_board_teardown(void);
 bool custom_dfu_start(void);
 void custom_systick(void);
+void custom_inDFU(bool DFU);
 
 // Keyboard config
 #define KEYBOARD_ADDRESS    0x23

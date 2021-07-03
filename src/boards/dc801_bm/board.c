@@ -25,6 +25,10 @@ static int LEDCounter = 0;
 static int curLED = LED_XOR;
 static bool inDFU = false;
 
+void custom_inDFU(bool DFU){
+    inDFU = DFU;
+}
+
 void custom_board_init(void){
     twi_master_init();
     keyboard_init();
